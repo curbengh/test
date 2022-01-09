@@ -15,7 +15,7 @@ jobs:
       - name: Install Dependencies
         run: |
           apk update
-          apk add brotli curl grep
+          apk add brotli curl git grep
       - name: Build
         run: sh src/script.sh
       - name: Compress
