@@ -1,6 +1,6 @@
 'use strict'
 
-// for deployment outside of GitLab CI, e.g. Cloudflare Pages and Netlify
+// for deployment outside of GitLab CI, e.g. Cloudflare Pages, Netlify, GitHub Pages, etc
 
 const { stream: gotStream } = require('got')
 const unzip = require('extract-zip')
