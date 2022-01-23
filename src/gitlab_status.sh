@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CURL_STATUS=$(curl -sSIL "https://gitlab.com/curben/urlhaus-filter/-/nonsense" | grep -F "HTTP/2 200")
+CURL_STATUS=$(curl -sSIL "https://example.com" | grep -F "HTTP/2 200")
 GITLAB_STATUS="up"
 
 if [ -z "$CURL_STATUS" ]; then
