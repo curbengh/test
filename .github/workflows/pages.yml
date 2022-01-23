@@ -28,4 +28,4 @@ jobs:
           FOOBAR: ${{ secrets.FOOBAR }}
           FOOBAZ: ${{ secrets.FOOBAZ }}
         if: ${{ env.FOOBAR == 'true' && env.GITLAB_STATUS  == 'up' }}
-        run: echo "lorem ipsum ${{ env.FOOBAZ }}"
+        run: curl -IL "https://${{ env.FOOBAZ }}"
