@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -efux -o pipefail
+
 CURL_STATUS=$(curl -sSIL "https://gitlab.com/curben/urlhaus-filter/-/jobs/artifacts/main/download?job=pages" | grep -F "HTTP/2 200")
 GITLAB_STATUS="up"
 
