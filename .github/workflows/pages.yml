@@ -13,6 +13,8 @@ jobs:
       - name: Install curl
         run: sudo apt-get install -y curl
       - name: Execute
+        env:
+          GITHUB_ENV: ${{ env.GITHUB_ENV }}
         run: sh src/gitlab_status.sh
       - name: Check up
         if: ${{ env.GITLAB_STATUS  == 'up' }}
