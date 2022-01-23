@@ -10,6 +10,7 @@ jobs:
   pages:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Install curl
         run: sudo apt-get install -y curl
       - name: Execute
