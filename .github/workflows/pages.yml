@@ -9,28 +9,12 @@ on:
 jobs:
   pages:
     runs-on: ubuntu-latest
-    container: alpine:latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: |
-          apk update
-          apk add brotli curl git grep
-      - name: Build
-        run: sh src/script.sh
-      - name: Compress
-        run: |
-          find public -type f -regex '.*\.\(txt\|conf\|tpl\|rules\)$' -exec gzip -f -k -9 {} \;
-          find public -type f -regex '.*\.\(txt\|conf\|tpl\|rules\)$' -exec brotli -f -k -9 {} \;
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          force_orphan: true
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: artifacts
-          path: ./tmp/
-          retention-days: 30
+      - name: Execute
+        run: sh src/gitlab_status.sh
+      - name: Check up
+        if: ${{ env.GITLAB_STATUS  == 'up' }}
+        run: echo "gitlab is up"
+      - name: Check down
+        if: ${{ env.GITLAB_STATUS  == 'down' }}
+        run: echo "gitlab is down"
