@@ -10,6 +10,8 @@ jobs:
   pages:
     runs-on: ubuntu-latest
     steps:
+      - name: Install curl
+        run: sudo apt-get install -y curl
       - name: Execute
         run: sh src/gitlab_status.sh
       - name: Check up
