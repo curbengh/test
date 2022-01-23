@@ -24,5 +24,8 @@ jobs:
         if: ${{ env.GITLAB_STATUS  == 'down' }}
         run: echo "gitlab is down"
       - name: AND condition
-        if: ${{ secrets.FOOBAR == 'true' && env.GITLAB_STATUS  == 'up' }}
-        run: echo "lorem ipsum ${{ secrets.FOOBAZ }}"
+        env:
+          FOOBAR: ${{ secrets.FOOBAR }}
+          FOOBAZ: ${{ secrets.FOOBAZ }}
+        if: ${{ env.FOOBAR == 'true' && env.GITLAB_STATUS  == 'up' }}
+        run: echo "lorem ipsum ${{ env.FOOBAZ }}"
