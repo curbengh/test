@@ -29,8 +29,3 @@ jobs:
           FOOBAZ: ${{ secrets.FOOBAZ }}
         if: ${{ env.FOOBAR == 'true' && env.GITLAB_STATUS  == 'up' }}
         run: curl -IL "https://${{ env.FOOBAZ }}"
-      - name: non-existent env
-        run: echo ${{ env.ZZZ }}
-      - name: non-existent env 2
-        if: ${{ env.ZZZ == 'true' }}
-        run: echo 'zzz'
