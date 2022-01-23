@@ -15,7 +15,7 @@ jobs:
       - name: Execute
         env:
           GITHUB_ENV: ${{ env.GITHUB_ENV }}
-        run: sh src/gitlab_status.sh
+        run: sh ./src/gitlab_status.sh
       - name: Check up
         if: ${{ env.GITLAB_STATUS  == 'up' }}
         run: echo "gitlab is up"
