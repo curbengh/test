@@ -10,22 +10,13 @@ jobs:
   pages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install curl
-        run: sudo apt-get install -y curl
-      - name: Execute
-        env:
-          GITHUB_ENV: ${{ env.GITHUB_ENV }}
-        run: sh ./src/gitlab_status.sh
-      - name: Check up
-        if: ${{ env.GITLAB_STATUS  == 'up' }}
-        run: echo "gitlab is up"
-      - name: Check down
-        if: ${{ env.GITLAB_STATUS  == 'down' }}
-        run: echo "gitlab is down"
-      - name: AND condition
+      - name: Check existence of FOOBAR
         env:
           FOOBAR: ${{ secrets.FOOBAR }}
-          FOOBAZ: ${{ secrets.FOOBAZ }}
-        if: ${{ env.FOOBAR == 'true' && env.GITLAB_STATUS  == 'up' }}
-        run: curl -IL "https://${{ env.FOOBAZ }}"
+        if: ${{ env.FOOBAR != 0 }}
+        run: echo 'FOOBAR env exists'
+      - name: Check existence of ABC
+        env:
+          ABC: ${{ secrets.ABC }}
+        if: ${{ env.ABC == 0 }}
+        run: echo 'ABC does not exist'
