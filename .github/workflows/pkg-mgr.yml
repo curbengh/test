@@ -20,6 +20,6 @@ jobs:
       - name: Install Dependencies
         run: ${{ matrix.pkg-mgr }} install
       - name: Test
-        run: ${{ matrix.pkg-mgr }} run test
+        run: ${{ matrix.pkg-mgr }} test
         env:
           CI: true
