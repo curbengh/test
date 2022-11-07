@@ -2,11 +2,12 @@
   "name": "test",
   "private": true,
   "scripts": {
-    "build": "node src/build.js"
+    "test": "ls node_modules"
   },
   "dependencies": {
     "extract-zip": "^2.0.1",
-    "got": "^11.8.3"
+    "got": "^11.8.3",
+    "@swc/core": "latest"
   },
   "engines": {
     "node": ">= 14.15.0"
